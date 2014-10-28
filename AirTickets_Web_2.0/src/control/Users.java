@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import model.User;
 import utilities.PropertiesFileHandler;
+import utilities.UserDAO;
 /**
  * 
  * @author Mateus
@@ -16,14 +17,12 @@ public class Users {
 	private User user;
 	private Scanner sc;
 	private FileWriter fw;
-	private PropertiesFileHandler p = null;
+	private UserDAO p = null;
 
 	public Users() {
 
 		user = new User();
-
-		p = new PropertiesFileHandler();
-
+		p = new UserDAO();
 	}
 
 	/**
@@ -32,8 +31,8 @@ public class Users {
 	 * @return bool_val If the user is created returns true. Otherwise, returns false.
 	 */
 	public boolean createUser(User user) {
-		p = new PropertiesFileHandler();
-		if (p.userExist(user) == false) {
+		p = new UserDAO();
+		if (p.readUser(user) == null) {
 
 			String hashedPassword = "";
 
