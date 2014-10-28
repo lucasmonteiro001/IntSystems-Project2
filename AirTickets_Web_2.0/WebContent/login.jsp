@@ -25,6 +25,7 @@
 			</div>
 			<input class="col-sm-offset-2 btn btn-success" type="submit" value="Submit">
 		</form>
+		<p align="left"> Don't have an account yet? Click <a href = "registration.jsp"> here </a> to register </p>
 	</div>
 </body>
 </html>
