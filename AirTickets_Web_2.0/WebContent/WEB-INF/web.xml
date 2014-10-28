@@ -29,4 +29,14 @@
     <servlet-name>Registration</servlet-name>
     <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Booking</display-name>
+    <servlet-name>Booking</servlet-name>
+    <servlet-class>control.Booking</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Booking</servlet-name>
+    <url-pattern>/Booking</url-pattern>
+  </servlet-mapping>
 </web-app>
