@@ -30,7 +30,7 @@ public class UserDAO {
 		 * param.add("Hello"); param.add(35767); param.add(4.0);
 		 * param.add(Timestamp.valueOf("2014-09-30 11:41:00"));
 		 */
-		param.add(user.getName());
+		param.add(user.getEmail());
 		ResultSet rs1 = jdbc
 				.queryDB(
 						"SELECT user.email FROM user WHERE user.email =?;",
@@ -39,8 +39,10 @@ public class UserDAO {
 		try {
 			if (rs1 != null) {
 				User returnUser = new User();
-				returnUser.setName(rs1.getString("email"));
+				returnUser.setEmail(rs1.getString("email"));
 				returnUser.setPassword(rs1.getString("password"));
+				returnUser.setDateOfBirth(rs1.getDate("date_of_birth"));
+				
 				return returnUser;
 			}
 			jdbc.conn.close();
@@ -56,11 +58,12 @@ public class UserDAO {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
-		param.add(user.getName());
+		param.add(user.getEmail());
 		param.add(user.getPassword());
+		param.add(user.getDateOfBirth());
 		try {
-			ResultSet rs1 = jdbc.queryDB(
-					"INSERT INTO user (email, password) VALUES (?, ?);",
+			ResultSet rs1 = jdbc.insertDB(
+					"INSERT INTO user (email, password, date_of_birth) VALUES (?, ?, ?);",
 					param);
 
 			jdbc.conn.close();

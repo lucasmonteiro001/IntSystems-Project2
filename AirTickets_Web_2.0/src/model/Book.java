@@ -10,7 +10,7 @@ public class Book {
 	private Date dateOfBooking;
 	private ArrayList<Integer> flightIds;
 	private int numberOfSeats;
-	private String userName;
+	private String email;
 	private double totalCost;
 
 	public int getId() {
@@ -53,12 +53,12 @@ public class Book {
 		this.numberOfSeats = numberOfSeats;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public double getTotalCost() {

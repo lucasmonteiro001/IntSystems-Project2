@@ -1,6 +1,10 @@
 package model;
+
+import java.util.Date;
+
 /**
  * Model class for user, containing name and password.
+ * 
  * @author Mateus
  *
  */
@@ -8,6 +12,9 @@ package model;
 public class User {
 	private String name;
 	private String password;
+	private String email;
+	private Date dateOfBirth;
+	private int id;
 
 	public String getName() {
 		return name;
@@ -29,6 +36,30 @@ public class User {
 		super();
 		this.name = name;
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public User() {
