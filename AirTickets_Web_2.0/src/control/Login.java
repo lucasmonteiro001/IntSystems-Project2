@@ -24,7 +24,7 @@ import model.User;
 public class Login extends HttpServlet {
 	private User user;
 	private Users us;
-	private String USERNAME_PARAMETER = "username";
+	private String EMAIL_PARAMETER = "email";
 	private String PASSWORD_PARAMETER = "password";
 
 	/**
@@ -60,11 +60,11 @@ public class Login extends HttpServlet {
 		Date createTime = new Date(session.getCreationTime());
 		// Get last access time of this web page.
 		//Date lastAccessTime = new Date(session.getLastAccessedTime());
-		session.setAttribute(USERNAME_PARAMETER,
-				request.getParameter(USERNAME_PARAMETER));
+		session.setAttribute(EMAIL_PARAMETER,
+				request.getParameter(EMAIL_PARAMETER));
 		session.setAttribute(PASSWORD_PARAMETER,
 				request.getParameter(PASSWORD_PARAMETER));
-		user = new User(session.getAttribute(USERNAME_PARAMETER).toString(),
+		user = new User(session.getAttribute(EMAIL_PARAMETER).toString(),
 				session.getAttribute(PASSWORD_PARAMETER).toString());
 
 		us = new Users();

@@ -32,12 +32,18 @@ public class User {
 		this.password = password;
 	}
 
-	public User(String name, String password) {
+	public User(String email, String password, Date dateOfBirth) {
 		super();
-		this.name = name;
+		this.email = email;
 		this.password = password;
+		this.dateOfBirth = dateOfBirth;
 	}
 
+	public User (String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
 	public String getEmail() {
 		return email;
 	}

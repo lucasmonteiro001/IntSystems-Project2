@@ -9,7 +9,7 @@ import model.User;
 public class UserDAO {
 	private final String HOST_ADDRESS = "cse.unl.edu";
 	private final String USER_DATABASE = "mmoraesg";
-	private final String email = "mmoraesg";
+	private final String USERNAME = "mmoraesg";
 	private final String PASSWORD = "haremsc4r3m";
 	private final String CSE_DATABASE = "cse464";
 
@@ -23,7 +23,7 @@ public class UserDAO {
 	
 	public User readUser(User user) {
 		// (String host, String db, String user, String password){
-		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
 		/**
@@ -39,9 +39,10 @@ public class UserDAO {
 		try {
 			if (rs1 != null) {
 				User returnUser = new User();
-				returnUser.setEmail(rs1.getString("email"));
-				returnUser.setPassword(rs1.getString("password"));
-				returnUser.setDateOfBirth(rs1.getDate("date_of_birth"));
+				returnUser.setEmail(user.getEmail());
+				returnUser.setPassword(user.getPassword());
+				
+				returnUser.setDateOfBirth(user.getDateOfBirth());
 				
 				return returnUser;
 			}
@@ -55,12 +56,16 @@ public class UserDAO {
 
 	// TODO criar os campos de usuario tal qual o ERD disponibilizado.
 	public void addUser(User user) {
-		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
 		param.add(user.getEmail());
 		param.add(user.getPassword());
-		param.add(user.getDateOfBirth());
+		java.text.SimpleDateFormat sdf = 
+			     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+			String dateBirth = sdf.format(user.getDateOfBirth());
+		param.add(dateBirth);
 		try {
 			ResultSet rs1 = jdbc.insertDB(
 					"INSERT INTO user (email, password, date_of_birth) VALUES (?, ?, ?);",
@@ -75,7 +80,7 @@ public class UserDAO {
 	}
 
 	public void removeUser(User user) {
-		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
 		param.add(user.getName());

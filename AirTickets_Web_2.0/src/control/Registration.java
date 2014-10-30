@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,8 +39,8 @@ public class Registration extends HttpServlet {
 
 		Users us = new Users();
 
-		user = new User(request.getParameter("username"),
-				request.getParameter("password"));
+		user = new User(request.getParameter("email").toString(),
+				request.getParameter("password").toString(), new Date(request.getParameter("dateOfBirth").toString()));
 
 		if (us.createUser(user) == true) {
 
