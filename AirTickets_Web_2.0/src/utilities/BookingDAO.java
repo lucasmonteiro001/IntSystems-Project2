@@ -5,25 +5,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.User;
-//TODO update user
-public class UserDAO {
+//TODO EVERYTHING OF BOOKING
+public class BookingDAO {
 	private final String HOST_ADDRESS = "cse.unl.edu";
 	private final String USER_DATABASE = "mmoraesg";
-	private final String email = "mmoraesg";
+	private final String USERNAME = "mmoraesg";
 	private final String PASSWORD = "haremsc4r3m";
 	private final String CSE_DATABASE = "cse464";
 
 	/*
 	 * We are going to use a CRUD to access the Objects at the Database
 	 */
-	public UserDAO() {
+	public BookingDAO() {
 
 	}
 
 	
 	public User readUser(User user) {
 		// (String host, String db, String user, String password){
-		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
 		/**
@@ -31,15 +31,16 @@ public class UserDAO {
 		 * param.add(Timestamp.valueOf("2014-09-30 11:41:00"));
 		 */
 		param.add(user.getName());
+		param.add(user.getPassword());
 		ResultSet rs1 = jdbc
 				.queryDB(
-						"SELECT user.email FROM user WHERE user.email =?;",
+						"SELECT user.username, user.password FROM user WHERE user.username =? AND user.password =?;",
 						param);
 
 		try {
 			if (rs1 != null) {
 				User returnUser = new User();
-				returnUser.setName(rs1.getString("email"));
+				returnUser.setName(rs1.getString("username"));
 				returnUser.setPassword(rs1.getString("password"));
 				return returnUser;
 			}
@@ -53,14 +54,14 @@ public class UserDAO {
 
 	// TODO criar os campos de usuario tal qual o ERD disponibilizado.
 	public void addUser(User user) {
-		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
 		param.add(user.getName());
 		param.add(user.getPassword());
 		try {
 			ResultSet rs1 = jdbc.queryDB(
-					"INSERT INTO user (email, password) VALUES (?, ?);",
+					"INSERT INTO user (username, password) VALUES (?, ?);",
 					param);
 
 			jdbc.conn.close();
@@ -72,12 +73,12 @@ public class UserDAO {
 	}
 
 	public void removeUser(User user) {
-		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, email,
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
 		param.add(user.getName());
 		try {
-			ResultSet rs1 = jdbc.queryDB("DELETE user WHERE (email = ?);",
+			ResultSet rs1 = jdbc.queryDB("DELETE user WHERE (username = ?);",
 					param);
 
 			jdbc.conn.close();

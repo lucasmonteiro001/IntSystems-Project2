@@ -12,9 +12,9 @@
 		<h3>Log in here</h3>
 		<form class="form-horizontal" role="form" name="input" action="Login" method="post">
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="username">Username</label>
+				<label class="col-sm-2 control-label" for="email">email</label>
 				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="username" placeholder="Username" name="username">
+					<input type="textfield" class="form-group" id="email" placeholder="email" name="email">
 				</div>
 			</div>
 			<div class="form-group">

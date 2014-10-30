@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
 				session.getAttribute(PASSWORD_PARAMETER).toString());
 
 		us = new Users();
-		if (us.getP().userExist(user) == true) {
+		if (us.userExists(user)== true) {
 			response.sendRedirect("flightsearchquery.jsp");
 
 		} else {

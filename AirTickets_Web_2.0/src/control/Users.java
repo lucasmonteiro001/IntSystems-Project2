@@ -17,12 +17,12 @@ public class Users {
 	private User user;
 	private Scanner sc;
 	private FileWriter fw;
-	private UserDAO p = null;
+	private UserDAO userDataAccessObject = null;
 
 	public Users() {
 
 		user = new User();
-		p = new UserDAO();
+		userDataAccessObject = new UserDAO();
 	}
 
 	/**
@@ -31,8 +31,8 @@ public class Users {
 	 * @return bool_val If the user is created returns true. Otherwise, returns false.
 	 */
 	public boolean createUser(User user) {
-		p = new UserDAO();
-		if (p.readUser(user) == null) {
+		userDataAccessObject = new UserDAO();
+		if (userDataAccessObject.readUser(user) == null) {
 
 			String hashedPassword = "";
 
@@ -40,7 +40,7 @@ public class Users {
 
 			user.setPassword(hashedPassword);
 
-			p.addUser(user);
+			userDataAccessObject.addUser(user);
 
 			return true;
 
@@ -57,14 +57,11 @@ public class Users {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public PropertiesFileHandler getP() {
-		return p;
+	public boolean userExists (User user) {
+		if (userDataAccessObject.readUser(user) != null) return true;
+		return false;
 	}
 
-	public void setP(PropertiesFileHandler p) {
-		this.p = p;
-	}
 	
 
 }
