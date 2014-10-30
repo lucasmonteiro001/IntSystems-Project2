@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 import model.User;
-import utilities.PropertiesFileHandler;
 import utilities.UserDAO;
 /**
  * 
