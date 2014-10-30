@@ -39,4 +39,14 @@
     <servlet-name>Booking</servlet-name>
     <url-pattern>/Booking</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FlightSearch</display-name>
+    <servlet-name>FlightSearch</servlet-name>
+    <servlet-class>control.FlightSearch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FlightSearch</servlet-name>
+    <url-pattern>/FlightSearch</url-pattern>
+  </servlet-mapping>
 </web-app>

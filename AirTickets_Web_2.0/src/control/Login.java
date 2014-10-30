@@ -69,7 +69,12 @@ public class Login extends HttpServlet {
 
 		us = new Users();
 		if (us.userExists(user)== true) {
-			response.sendRedirect("flightsearchquery.jsp");
+			String hashed = ""+user.getPassword().hashCode();
+			if (hashed.equals(us.getUser().getPassword()))
+				response.sendRedirect("flightsearchquery.jsp");
+			else {
+				response.sendRedirect("login.jsp");
+			}
 
 		} else {
 			response.sendRedirect("registration.jsp");

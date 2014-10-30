@@ -57,7 +57,11 @@ public class Users {
 		this.user = user;
 	}
 	public boolean userExists (User user) {
-		if (userDataAccessObject.readUser(user) != null) return true;
+		User u = userDataAccessObject.readUser(user);
+		if (u != null) {
+			setUser(u);
+			return true;
+		}
 		return false;
 	}
 

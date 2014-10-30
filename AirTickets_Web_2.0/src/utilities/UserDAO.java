@@ -33,16 +33,16 @@ public class UserDAO {
 		param.add(user.getEmail());
 		ResultSet rs1 = jdbc
 				.queryDB(
-						"SELECT user.email FROM user WHERE user.email =?;",
+						"SELECT * FROM user WHERE user.email =?;",
 						param);
 
 		try {
-			if (rs1 != null) {
+			if (rs1 != null && rs1.next()) {
 				User returnUser = new User();
-				returnUser.setEmail(user.getEmail());
-				returnUser.setPassword(user.getPassword());
+				returnUser.setEmail(rs1.getString("email"));
+				returnUser.setPassword(rs1.getString("password"));
 				
-				returnUser.setDateOfBirth(user.getDateOfBirth());
+				returnUser.setDateOfBirth(rs1.getDate("date_of_birth"));
 				
 				return returnUser;
 			}
