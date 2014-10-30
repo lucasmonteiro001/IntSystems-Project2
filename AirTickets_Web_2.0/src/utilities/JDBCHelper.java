@@ -13,7 +13,14 @@ public class JDBCHelper {
 	public Connection conn;
 
 	public JDBCHelper(String host, String db, String user, String password){
+		try {
+			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.conn = this.initiateConnection(host, db, user, password);
+		
 	}
 	
 	/***
