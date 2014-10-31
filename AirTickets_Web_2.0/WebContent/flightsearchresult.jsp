@@ -5,7 +5,7 @@
  %>
  
 <jsp:include page="header.jsp"/>
-
+name: ${requestScope.flights }
 <div class="well well-sm span4">
 	<h4 style="display:inline">Choose your flight</h4>
 

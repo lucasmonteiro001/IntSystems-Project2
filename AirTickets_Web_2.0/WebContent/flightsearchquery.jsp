@@ -26,7 +26,7 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 
 <div class="well well-sm span4">
     <h4>Details of your travel: </h4>
-	<form class="form-horizontal form-group-sm" role="form" name="input" action="flightsearchresult.jsp" method="post" id="input">
+	<form class="form-horizontal form-group-sm" role="form" name="input" action="FlightSearch" method="post" id="input">
 		<div class="form-group">
   			<label class="col-sm-2 control-label" for="source">Source</label>
   			<select name="source" form="input" id="source">
@@ -47,12 +47,6 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
   		<label class="col-sm-2 control-label" for="departure">Departure</label>
   			<div class="col-sm-10">
   				<input type="textfield" class="form-group" id="departure" name="departure">
-  			</div>
-		</div>
-		<div class="form-group">
-  		<label class="col-sm-2 control-label" for="arrival">Arrival</label>
-  			<div class="col-sm-10">
-  				<input type="textfield" class="form-group" id="arrival" name="arrival">
   			</div>
 		</div>
 		<div class="form-group">
