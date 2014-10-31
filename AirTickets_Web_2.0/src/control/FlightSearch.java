@@ -57,9 +57,10 @@ public class FlightSearch extends HttpServlet {
 					Date departure = new Date (session.getAttribute("departure").toString());
 					flight.setDeparture(departure);
 					flights = searchFlightDao.readFlight(flight);
+					request.setAttribute("flights", flights);
 					
 				}
-				request.setAttribute("flights", flights);
+				
 				RequestDispatcher rd = request.getRequestDispatcher("flightsearchresult.jsp");
 				rd.forward(request, response);
 			}
