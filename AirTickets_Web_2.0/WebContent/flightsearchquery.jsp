@@ -1,32 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="style/bootstrap.css">
-<title>Search for your flight</title>
-</head>
-<body>
-<div class="container-fluid">
-    <h3>Details of your travel: </h3>
-	<form class="form-horizontal" role="form" name="input" action="flightsearchresult.jsp" method="post">
+<%
+ 	if (session.getAttribute("email") == null) {
+ 		response.sendRedirect("loginError.jsp");
+ 	}
+ %>
+
+<%
+//Airline iata codes
+String[] airlines = {"AA", "DL", "UA", "WN", "B6", "AS", "NK", "F9"};
+
+//airport iata codes
+String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS", 
+		"CLT", "MDW", "ORD", "CVG", "CLE", "CMH", "DFW", 
+		"DEN", "DTW", "FLL", "RSW", "BDL", "HNL", "IAH", 
+		"HOU", "IND", "MCI", "LAS", "LAX", "MEM", "MIA", 
+		"MSP", "BNA", "MSY", "JFK", "LGA", "EWR", "OAK", 
+		"ONT", "MCO", "PHL", "PHX", "PIT", "PDX", "RDU", 
+		"SMF", "SLC", "SAT", "SAN", "SFO", "SJC", "SNA", 
+		"SEA", "STL", "TPA", "IAD", "DCA"}; 
+%>
+
+<jsp:include page="header.jsp"/>
+
+<script type="text/javascript" src="js/masked_input_1.3.js"></script>
+
+
+<div class="well well-sm span4">
+    <h4>Details of your travel: </h4>
+	<form class="form-horizontal form-group-sm" role="form" name="input" action="flightsearchresult.jsp" method="post" id="input">
 		<div class="form-group">
   			<label class="col-sm-2 control-label" for="source">Source</label>
-  			<div class="col-sm-10">
-  				<input type="textfield" class="form-group" id="source" placeholder="Source" name="source">
-  			</div>	
+  			<select name="source" form="input" id="source">
+  				<% for (int i = 0; i < airports.length ; i++) {%>
+  					<option value=<%=airports[i]%> ><%=airports[i]%></option>
+  				<% } %>
+  			</select>
 		</div>
 		<div class="form-group">
   			<label class="col-sm-2 control-label" for="destination">Destination</label>
+  			<select name="destination" form="input" id="destination">
+  				<% for (int i = 0; i < airports.length ; i++) {%>
+  					<option value=<%=airports[i]%> ><%=airports[i]%></option>
+  				<% } %>
+  			</select>
+		</div>
+		<div class="form-group">
+  		<label class="col-sm-2 control-label" for="departure">Departure</label>
   			<div class="col-sm-10">
-  				<input type="textfield" class="form-group" id="destination" placeholder="Destination" name="destination">
+  				<input type="textfield" class="form-group" id="departure" name="departure">
+  			</div>
+		</div>
+		<div class="form-group">
+  		<label class="col-sm-2 control-label" for="arrival">Arrival</label>
+  			<div class="col-sm-10">
+  				<input type="textfield" class="form-group" id="arrival" name="arrival">
   			</div>
 		</div>
 		<div class="form-group">
   		<label class="col-sm-2 control-label" for="number_of_seats">Number of seats</label>
   			<div class="col-sm-10">
-  				<input type="textfield" class="form-group" id="number_of_seats" placeholder="Number of seats" name="number_of_seats">
+  				<input type="number" class="form-group" min="1" max="10" id="number_of_seats" name="number_of_seats">
   			</div>
 		</div>
 		<div class="form-group">
@@ -39,11 +71,25 @@
 		    	</select>
 		    </div>
     	</div>
-		<button type="button" class="btn btn-danger col-md-offset-2" value="Exit" onClick="window.location='login.jsp'">Exit</button>
-		<button type="submit" class="btn btn-success" value="Search">Search</button>
-	</form> 
-	<br><br><button type="button" class="btn btn-default"  onClick="window.location='login.jsp'"><b>Logout</b></button>    
+    	<button type="submit" class="btn btn-primary btn-sm col-md-offset-2" value="Search">Search</button>
+		<button type="button" class="btn btn-danger btn-sm" value="Exit" onClick="window.location='login.jsp'">Exit</button>
+	</form>    
 </div>
-</body>
-</html>
+
+<script>
+	MaskedInput({
+		  elm: document.getElementById('departure'),
+		  format: 'MM/DD/YYYY',
+		  separator: '\/',
+		  typeon: 'MDY'
+		});
+	MaskedInput({
+		  elm: document.getElementById('arrival'),
+		  format: 'MM/DD/YYYY',
+		  separator: '\/',
+		  typeon: 'MDY'
+		});
+</script>
+
+<jsp:include page="bottom.jsp"/>
 

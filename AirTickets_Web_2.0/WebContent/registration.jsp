@@ -2,6 +2,8 @@
 
 <script src="js/checkPwd.js"></script>
 
+<script type="text/javascript" src="js/masked_input_1.3.js"></script>
+
 <h3>Sign up</h3>
 
 <div class="well well-sm span4">	
@@ -37,3 +39,12 @@
 </div>
 	
 <jsp:include page="bottom.jsp"/>
+
+<script>
+	MaskedInput({
+		  elm: document.getElementById('dateOfBirth'),
+		  format: 'MM/DD/YYYY',
+		  separator: '\/',
+		  typeon: 'MDY'
+		});
+</script>

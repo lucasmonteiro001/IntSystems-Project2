@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
                             
-    <title>Starter Template for Bootstrap</title>
+    <title>Air Minas</title>
     
     <!-- Bootstrap core CSS -->
     <link href="style/bootstrap.min.css" rel="stylesheet">
