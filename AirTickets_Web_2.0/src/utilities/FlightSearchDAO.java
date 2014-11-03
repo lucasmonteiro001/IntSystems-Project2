@@ -42,8 +42,9 @@ public class FlightSearchDAO {
 				+ "and cse464.flights.destination = ? "
 				+ "AND DATE(cse464.flights.departure) like '"
 				+ dateDeparture + "%';";
-
+		
 		ResultSet rs1 = jdbc.queryDB(query, param);
+		
 		
 		try {
 			if (rs1 != null) {

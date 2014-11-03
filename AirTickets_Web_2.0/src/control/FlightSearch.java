@@ -38,10 +38,7 @@ public class FlightSearch extends HttpServlet {
 			throws ServletException, IOException {
 		// Just can work  if a session is there
 		HttpSession session = request.getSession();
-		if (session.getAttribute("email").equals(null)) {
-			response.sendRedirect("invalidSession.jsp");
-		}
-		else {
+
 			ArrayList <Flight> flights;
 			if (request.getParameter("source") != null 
 				&& request.getParameter ("destination") != null) {
@@ -58,12 +55,13 @@ public class FlightSearch extends HttpServlet {
 					flight.setDeparture(departure);
 					flights = searchFlightDao.readFlight(flight);
 					request.setAttribute("flights", flights);
+					session.setAttribute("flights", flights);
 					
 				}
 				
 				RequestDispatcher rd = request.getRequestDispatcher("flightsearchresult.jsp");
 				rd.forward(request, response);
 			}
-		}
+		
 	}
 }

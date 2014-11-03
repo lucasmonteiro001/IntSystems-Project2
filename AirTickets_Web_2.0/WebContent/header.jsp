@@ -35,7 +35,7 @@
 						</a></li>
 						<!-- Check if there's a session -->
 						<%
-							if (session.getAttribute("email") != null
+							if (session.getAttribute("user") != null
 									&& !pg.getCurrPage().equals("bookinghistory.jsp")) {
 						%>
 						<li><a href="bookinghistory.jsp"> Booking history </a></li>
