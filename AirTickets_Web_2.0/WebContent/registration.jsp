@@ -17,7 +17,7 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label" for="dateOfBirth">Date of birth</label>
 			<div class="col-sm-10">
-				<input type="datetime-local" class="form-group" id="dateOfBirth" placeholder="MM/DD/YYYY" name="dateOfBirth">
+				<input type="textfield" class="form-group" id="dateOfBirth" placeholder="MM/DD/YYYY" name="dateOfBirth">
 			</div>
 		</div>
 		<div class="form-group">

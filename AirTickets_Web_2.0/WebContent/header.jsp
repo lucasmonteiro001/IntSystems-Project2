@@ -48,9 +48,9 @@
 		                <li><img class="logo" src="style/airplane.png"></li>
 		                <li><img class="logo" src="style/background-mg.png"></li>
 		                <!-- Check if there's a session -->
-		                <% if (session.getAttribute("email") != null) { %>
+		                <% if (session.getAttribute("user") != null) { %>
 			                <li class="divider-vertical"></li>
-			                <li><a href="Logout"><span class="glyphicon glyphicon-off black">&nbsp</span><%=session.getAttribute("username")%></a></li>
+			                <li><a href="Logout"><span class="glyphicon glyphicon-off black">&nbsp</span><%=session.getAttribute("email")%></a></li>
 			            <% } %>
 		            </ul>
 		        </div>

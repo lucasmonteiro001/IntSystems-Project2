@@ -10,7 +10,7 @@
 
 	<p>
 		Thank your for flying <b>Air Minas</b>. Click <a
-			href="flightsearchresult.jsp"> here </a> to continue flying!
+			href="flightsearchquery.jsp"> here </a> to continue flying!
 	</p><br>
 
 	<button type="button" class="btn btn-primary btn-sm"  onClick="window.location='flightsearchquery.jsp'"><b>Home</b></button>

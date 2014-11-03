@@ -54,16 +54,38 @@ public class Login extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		
+		Users users = new Users();
+		User usr = new User();
+		
+		usr.setEmail((String) request.getParameter(EMAIL_PARAMETER));
+		usr.setPassword((String) request.getParameter(PASSWORD_PARAMETER));
+		
+		if (users.userExists(usr) == true) {
+			String hashed = "" + usr.getPassword().hashCode();
+			
+				if (hashed.equals(users.getUser().getPassword())) {
+					session.setAttribute("user", usr);
+					response.sendRedirect("flightsearchquery.jsp");
+				}
+			}
+			else {
+				response.sendRedirect("login.jsp");
+			}
+			
+		}
+/*		
 		// Create a session object if it is already not created.
 		HttpSession session = request.getSession();
+		
+		User usr = (User) session.getAttribute("usr");
 		// Get session creation time.
 		Date createTime = new Date(session.getCreationTime());
 		// Get last access time of this web page.
 		//Date lastAccessTime = new Date(session.getLastAccessedTime());
-		session.setAttribute(EMAIL_PARAMETER,
-				request.getParameter(EMAIL_PARAMETER));
-		session.setAttribute(PASSWORD_PARAMETER,
-				request.getParameter(PASSWORD_PARAMETER));
+		
 		user = new User(session.getAttribute(EMAIL_PARAMETER).toString(),
 				session.getAttribute(PASSWORD_PARAMETER).toString());
 
@@ -73,12 +95,12 @@ public class Login extends HttpServlet {
 			if (hashed.equals(us.getUser().getPassword()))
 				response.sendRedirect("flightsearchquery.jsp");
 			else {
-				response.sendRedirect("login.jsp");
-			}
+			response.sendRedirect("login.jsp");
+		}
 
 		} else {
 			response.sendRedirect("registration.jsp");
 		}
 
-	}
+	}*/
 }
