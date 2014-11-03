@@ -1,8 +1,5 @@
 <jsp:include page="header.jsp"/>
 
-
-      
-
 <h3>Log in here</h3>
 <div class="well well-sm span4">
 	<form class="form-horizontal form-group-sm" role="form" name="input" action="Login" method="post">

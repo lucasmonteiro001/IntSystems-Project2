@@ -1,13 +1,11 @@
 <%
- 	if (session.getAttribute("email") == null) {
+ 	if (session.getAttribute("user") == null) {
  		response.sendRedirect("loginError.jsp");
  	}
  %>
 
 
 <jsp:include page="header.jsp"/>
-
-
 
 <div class="well well-sm span4">
 	<h4 style="display:inline">Choose your flight</h4>

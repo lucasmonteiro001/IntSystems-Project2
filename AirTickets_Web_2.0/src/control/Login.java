@@ -65,7 +65,7 @@ public class Login extends HttpServlet {
 		
 		if (users.userExists(usr) == true) {
 			String hashed = "" + usr.getPassword().hashCode();
-			
+			usr = users.getUser();
 				if (hashed.equals(users.getUser().getPassword())) {
 					session.setAttribute("user", usr);
 					response.sendRedirect("flightsearchquery.jsp");

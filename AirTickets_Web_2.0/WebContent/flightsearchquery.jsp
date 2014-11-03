@@ -23,6 +23,7 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 
 <script type="text/javascript" src="js/masked_input_1.3.js"></script>
 
+<jsp:useBean id="user" class="model.User" scope="session"/>
 
 <div class="well well-sm span4">
     <h4>Details of your travel: </h4>
