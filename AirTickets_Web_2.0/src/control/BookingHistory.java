@@ -5,20 +5,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import utilities.BookingHistoryDAO;
 import model.Book;
+import model.BookingHistoryModel;
 import model.Flight;
 import model.User;
 
 /**
  * Servlet implementation class Booking
  */
-public class Booking extends HttpServlet {
+public class BookingHistory extends HttpServlet {
 	
 	/*
 	 * id - int
@@ -35,11 +38,10 @@ public class Booking extends HttpServlet {
 	private final String NUMBER_OF_SEATS = "numberofseats";
 	private final String BOOKING_EMAIL = "email";
 	private final String TOTAL_COST = "totalcost";
-    private HttpSession session;  
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Booking() {
+    public BookingHistory() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,15 +58,22 @@ public class Booking extends HttpServlet {
 	 */
 	//TODO What is the best way to integrate Account, User and Booking?
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		session = request.getSession();
-		Flight flight = getChoosenFlight (request);
-		Book book = new Book ();
-		User usr = (User) session.getAttribute("user");
-		book.setEmail(usr.getEmail());
-		book.setFlightIds(flight.getId());
-		book.setDateOfBooking(flight.getDeparture());
-		book.setNumberOfSeats(flight.getBusinessClassReserved()+flight.getEconomyClassReserved()+flight.getFirstClassReserved());
-		//book.setTotalCost(flight.get);
+		
+		HttpSession session = request.getSession();
+		
+		BookingHistoryDAO bHDAO = new BookingHistoryDAO();
+		
+		ArrayList<model.BookingHistoryModel> booking;
+		User user = (User) session.getAttribute("user");
+		
+		booking = bHDAO.getBookingHistory(user);
+		
+		session.setAttribute("bookingHistory", booking);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("bookinghistory.jsp");
+		rd.forward(request, response);
+		
+		
 	}
 	
 

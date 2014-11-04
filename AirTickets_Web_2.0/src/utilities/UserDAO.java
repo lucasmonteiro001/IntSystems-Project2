@@ -41,7 +41,7 @@ public class UserDAO {
 				User returnUser = new User();
 				returnUser.setEmail(rs1.getString("email"));
 				returnUser.setPassword(rs1.getString("password"));
-				
+				returnUser.setId(rs1.getInt("id"));
 				returnUser.setDateOfBirth(rs1.getDate("date_of_birth"));
 				
 				return returnUser;

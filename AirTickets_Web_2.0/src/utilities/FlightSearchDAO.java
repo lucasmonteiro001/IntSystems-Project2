@@ -35,18 +35,19 @@ public class FlightSearchDAO {
 
 		param.add(flight.getSource());
 		param.add(flight.getDestination());
-		param.add(flight.getDeparture());
+
 		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(
 				"yyyy-MM-dd");
+
 		String dateDeparture = sdf.format(flight.getDeparture());
 		String query = "SELECT * FROM cse464.flights WHERE cse464.flights.source = ? "
 				+ "and cse464.flights.destination = ? "
 				+ "AND DATE(cse464.flights.departure) like '"
-				+ dateDeparture + "%';";
-		
+				+ dateDeparture
+				+ "%';";
+
 		ResultSet rs1 = jdbc.queryDB(query, param);
-		
-		
+
 		try {
 			if (rs1 != null) {
 				ArrayList<Flight> flightArray = new ArrayList<Flight>();
@@ -57,12 +58,15 @@ public class FlightSearchDAO {
 					returnFlight.setOperator(rs1.getString("operator"));
 					returnFlight.setSource(rs1.getString("source"));
 					returnFlight.setDestination(rs1.getString("destination"));
-					returnFlight.setBusinessClassReserved(rs1.getInt("business_reserved"));
-					returnFlight.setEconomyClassReserved(rs1.getInt("economy_reserved"));
-					returnFlight.setFirstClassReserved(rs1.getInt("first_class_reserved"));
+					returnFlight.setBusinessClassReserved(rs1
+							.getInt("business_reserved"));
+					returnFlight.setEconomyClassReserved(rs1
+							.getInt("economy_reserved"));
+					returnFlight.setFirstClassReserved(rs1
+							.getInt("first_class_reserved"));
 					returnFlight.setDeparture(rs1.getTimestamp("departure"));
 					returnFlight.setArrival(rs1.getTimestamp("arrival"));
-				
+
 					flightArray.add(returnFlight);
 
 				}
@@ -124,6 +128,5 @@ public class FlightSearchDAO {
 		}
 		return null;
 	}
-
 
 }

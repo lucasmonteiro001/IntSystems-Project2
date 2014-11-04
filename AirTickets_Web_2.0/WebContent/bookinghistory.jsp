@@ -1,8 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.BookingHistoryModel"%>
 <%
  	if (session.getAttribute("user") == null) {
  		response.sendRedirect("loginError.jsp");
  	}
  %>
+ 
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
 <jsp:include page="header.jsp"/>
 
@@ -25,46 +29,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td> 09/30/14 </td>
-					<td> Belo Horizonte </td>
-					<td> Lincoln </td>
-					<td> 844 </td>
-					<td> 1:00pm </td>
-					<td> 6:00am </td>
-					<td> 2 </td>
-					<td> $389,00 </td>
-				</tr>
-				<tr>
-					<td> 09/30/14 </td>
-					<td> Belo Horizonte </td>
-					<td> Lincoln </td>
-					<td> 844 </td>
-					<td> 1:00pm </td>
-					<td> 6:00am </td>
-					<td> 2 </td>
-					<td> $389,00 </td>
-				</tr>
-				<tr>
-					<td> 09/30/14 </td>
-					<td> Belo Horizonte </td>
-					<td> Lincoln </td>
-					<td> 844 </td>
-					<td> 1:00pm </td>
-					<td> 6:00am </td>
-					<td> 2 </td>
-					<td> $389,00 </td>
-				</tr>
-				<tr>
-					<td> 09/30/14 </td>
-					<td> Belo Horizonte </td>
-					<td> Lincoln </td>
-					<td> 844 </td>
-					<td> 1:00pm </td>
-					<td> 6:00am </td>
-					<td> 2 </td>
-					<td> $389,00 </td>
-				</tr>
+				<%
+					ArrayList<BookingHistoryModel> arr = (ArrayList<BookingHistoryModel>)session.getAttribute("bookingHistory");
+				
+					BookingHistoryModel b = new BookingHistoryModel();
+					
+					for (int i = 0; i < arr.size(); i++) {
+						b = arr.get(i);
+				%>
+					<tr>
+						<td> <%= b.getDate_of_booking() %> </td>
+						<td> <%= b.getSource() %> </td>
+						<td> <%= b.getDestination() %> </td>
+						<td> <%= b.getFlight_id() %> </td>
+						<td> <%= b.getDeparture() %> </td>
+						<td> <%= b.getArrival() %> </td>
+						<td> 1 </td>
+						<td> <%= b.getTotal_cost() %> </td>
+					</tr>
+				<% } %>			
 			</tbody>
 		</table>
 	</div>
