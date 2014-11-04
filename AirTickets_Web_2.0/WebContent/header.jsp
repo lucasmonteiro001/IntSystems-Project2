@@ -2,17 +2,11 @@
 <%@page import="java.util.*"%>
 <%@ include file="../head.jsp"%>
 
-<%
-	if (session.getAttribute("user") != null) {
-%>
-<jsp:useBean id="user" class="model.User" scope="session" />
-<%
-	}
-%>
+<% if (session.getAttribute("user") != null) { %>
+	<jsp:useBean id="user" class="model.User" scope="session" />
+<% } %>
 
-<%
-	PageUtilities pg = new PageUtilities(request);
-%>
+<% PageUtilities pg = new PageUtilities(request); %>
 
 <body>
 	<div class="container">
@@ -27,18 +21,19 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#"> <%
- 	if (pg.getSystemPages().get(pg.getCurrPage()) != null) {
- %> <%=pg.getSystemPages().get(pg.getCurrPage())%> <%
- 	}
- %>
+						<li class="active"><a href="#"> 
+						<% if (pg.getSystemPages().get(pg.getCurrPage()) != null) { %> 
+							<%=pg.getSystemPages().get(pg.getCurrPage())%> 
+						<% } %>
 						</a></li>
 						<!-- Check if there's a session -->
 						<%
 							if (session.getAttribute("user") != null
-									&& !pg.getCurrPage().equals("bookinghistory.jsp")) {
+									&& !pg.getCurrPage().equals("bookinghistory.jsp")
+									&& !pg.getCurrPage().equals("login.jsp")
+									&& !pg.getCurrPage().equals("registration.jsp")) {
 						%>
-						<li><a href="bookinghistory.jsp"> Booking history </a></li>
+						<li><a href="BookingHistory"> Booking history </a></li>
 						<%
 							}
 						%>
