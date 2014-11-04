@@ -19,5 +19,19 @@
 		&nbsp or <a href = "registration.jsp">Sign up now</a>
 	</form>
 </div>
+
+<script>
+	$("form").validate({
+		rules: {
+			email: {
+		      	required: true,
+		      	email: true
+		    },
+		    password: {
+		    	required: true
+		    }
+		  }
+	});
+</script>
 		
 <jsp:include page="bottom.jsp"/>
