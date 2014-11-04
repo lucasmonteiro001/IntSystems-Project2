@@ -59,5 +59,14 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <description></description>
+    <display-name>FlightResult</display-name>
+    <servlet-name>FlightResult</servlet-name>
+    <servlet-class>control.FlightResult</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FlightResult</servlet-name>
+    <url-pattern>/FlightResult</url-pattern>
+  </servlet-mapping>
 </web-app>

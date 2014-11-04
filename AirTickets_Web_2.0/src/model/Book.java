@@ -8,7 +8,7 @@ public class Book {
 	private int id;
 	private int bookingId;
 	private Date dateOfBooking;
-	private ArrayList<Integer> flightIds;
+	private int flightIds;
 	private int numberOfSeats;
 	private String email;
 	private double totalCost;
@@ -37,11 +37,11 @@ public class Book {
 		this.dateOfBooking = dateOfBooking;
 	}
 
-	public ArrayList<Integer> getFlightIds() {
+	public int getFlightIds() {
 		return flightIds;
 	}
 
-	public void setFlightIds(ArrayList<Integer> flightIds) {
+	public void setFlightIds(int flightIds) {
 		this.flightIds = flightIds;
 	}
 

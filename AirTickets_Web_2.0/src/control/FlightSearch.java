@@ -36,32 +36,37 @@ public class FlightSearch extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Just can work  if a session is there
+		// Just can work if a session is there
 		HttpSession session = request.getSession();
 
-			ArrayList <Flight> flights;
-			if (request.getParameter("source") != null 
-				&& request.getParameter ("destination") != null) {
-				Flight flight = new Flight ();
-				session.setAttribute("source", request.getParameter("source"));
-				session.setAttribute("destination", request.getParameter("destination"));
-				flight.setDestination(session.getAttribute("destination").toString());
-				flight.setSource(session.getAttribute("source").toString());
-				if ((request.getParameter("departure") != null || !request.getParameter("departure").toString().equals("MM/DD/YYYY")) ){
-					session.setAttribute("departure", request.getParameter("departure"));
-					searchFlightDao = new FlightSearchDAO();
-					System.out.println (session.getAttribute("departure"));
-					Date departure = new Date (session.getAttribute("departure").toString());
-					flight.setDeparture(departure);
-					flights = searchFlightDao.readFlight(flight);
-					request.setAttribute("flights", flights);
-					session.setAttribute("flights", flights);
-					
-				}
+		ArrayList<Flight> flights;
+		if (request.getParameter("source") != null
+				&& request.getParameter("destination") != null) {
+			Flight flight = new Flight();
+			session.setAttribute("source", request.getParameter("source"));
+			session.setAttribute("destination",
+					request.getParameter("destination"));
+			flight.setDestination(session.getAttribute("destination")
+					.toString());
+			flight.setSource(session.getAttribute("source").toString());
+			if ((request.getParameter("departure") != null || !request
+					.getParameter("departure").toString().equals("MM/DD/YYYY"))) {
+				session.setAttribute("departure",
+						request.getParameter("departure"));
+				searchFlightDao = new FlightSearchDAO();
+				System.out.println(session.getAttribute("departure"));
 				
-				RequestDispatcher rd = request.getRequestDispatcher("flightsearchresult.jsp");
-				rd.forward(request, response);
+				flight.setDeparture(new Date(session.getAttribute("departure").toString()));
+				flights = searchFlightDao.readFlight(flight);
+				request.setAttribute("flights", flights);
+				session.setAttribute("flights", flights);
+
 			}
-		
+
+			RequestDispatcher rd = request
+					.getRequestDispatcher("flightsearchresult.jsp");
+			rd.forward(request, response);
+		}
+
 	}
 }
