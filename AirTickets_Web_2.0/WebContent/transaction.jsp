@@ -41,7 +41,7 @@
 <div class="well well-sm span4">	
 	<form class="form-horizontal" role="form" name="input" action="Transaction" method="post">
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="accHolderName">Account holder id</label>
+				<label class="col-sm-2 control-label" for="accHolderName">Account holder name</label>
 				<div class="col-sm-10">
 					<input type="textfield" class="form-group" id="accHolderName" placeholder="Account holder name" name="accountHolderId">
 				</div>
@@ -49,7 +49,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="routNumber">Routing number</label>
 				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="routNumber" placeholder="Routing number" name="accountRoutingNumber">
+					<input type="textfield" class="form-group" id="routNumber" placeholder="Routing number" name="accountRoutingNumber" data-mask="0000000000">
 				</div>
 			</div>
 
@@ -57,4 +57,20 @@
 		</form>
 </div>
 
+<script type="text/javascript" src="js/mask/jquery.mask.js"></script>
+<script type="text/javascript" src="js/masked_input_1.3.js"></script>
+
+<script>
+	$("form").validate({
+		rules: {
+			accountHolderId: {
+		      	required: true
+		    },
+		    accountRoutingNumber: {
+		    	required: true
+		    }
+		    
+		  }
+	});
+</script>
 <jsp:include page="bottom.jsp"/>

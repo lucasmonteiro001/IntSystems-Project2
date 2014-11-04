@@ -20,6 +20,7 @@
 	</form>
 </div>
 
+
 <script>
 	$("form").validate({
 		rules: {
