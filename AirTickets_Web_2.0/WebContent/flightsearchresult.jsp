@@ -35,7 +35,7 @@
 			<tbody>
 				<c:forEach var="flightBean" items="${requestScope['flights']}">
 					<tr>
-						<td><input type="radio" name="choosenFlight" value="${flightBean.id}"></td>
+						<td><input type="radio" id="${flightBean.id}" name="choosenFlight" value="${flightBean.id}" required></td>
 						<td><c:out value="${flightBean.departure}" /></td>
 						<td><c:out value="${flightBean.source}" /></td>
 						<td><c:out value="${flightBean.plane}" /></td>
@@ -44,16 +44,28 @@
 						<td><c:out value="${flightBean.arrival}" /></td>
 					</tr>
 				</c:forEach>
-
-			</tbody>
+			</tbody>	
 		</table>
+		
+		<label for="choosenFlight" class="error" style="display:none">Please select one option</label><br>
+		
 		<input type="button" class="btn" value="Back to Search page"
-			onclick="window.location='flightsearchquery.jsp';"> <input
-			type="button" class="btn" value="See booking history page"
-			onclick="window.location='BookingHistory';"> <input
-			type="submit" class="btn btn-primary" name="send"
+			onclick="window.history.back();"> 
+		<input type="button" class="btn" value="See booking history page"
+			onclick="window.location='BookingHistory';"> 
+		<input type="submit" class="btn btn-primary" name="send"
 			value="View and Book" align="right">
 	</form>
 </div>
+
+<script>
+	$("form").validate({
+		rules: {
+			choosenFlight: {
+		      	required: true
+		    }
+		  }
+	});
+</script>
 
 <jsp:include page="bottom.jsp" />
