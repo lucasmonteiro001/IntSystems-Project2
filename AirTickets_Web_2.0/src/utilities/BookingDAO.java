@@ -3,6 +3,7 @@ package utilities;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.Book;
 import model.User;
@@ -25,7 +26,8 @@ public class BookingDAO {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
 		ArrayList<Object> param = new ArrayList<Object>();
-		param.add(book.getBookingId());
+		//param.add(new Date());
+		//param.add(book.getBookingId());
 		param.add(book.getFlightIds());
 		param.add(book.getNumberOfSeats());
 		param.add(book.getAccountId());
@@ -35,8 +37,8 @@ public class BookingDAO {
 
 
 		try {
-			ResultSet rs1 = jdbc.queryDB(
-					"INSERT INTO user (date_of_booking, flight_ids, number_of_seats, account_id, user_id, total_cost) VALUES (curdate(), ?, ?, ?, ?, ?);",
+			ResultSet rs1 = jdbc.insertDB(
+					"INSERT INTO mmoraesg.booking (date_of_booking, flight_ids, number_of_seats, account_id, user_id, total_cost) VALUES (curdate(), ?, ?, ?, ?, ?);",
 					param);
 
 			jdbc.conn.close();

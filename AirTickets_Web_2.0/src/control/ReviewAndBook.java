@@ -43,6 +43,7 @@ public class ReviewAndBook extends HttpServlet {
 		if ((flight.getBusinessClassReserved() - businessClass >= 0) && (flight.getEconomyClassReserved() - economyClass >= 0) && (flight.getFirstClassReserved() - firstClass >= 0)) {
 			totalCost = economyClass*TX_ECONOMY_SEAT+businessClass*TX_BUSINESS_CLASS_SEAT+firstClass*TX_FIRST_CLASS_SEAT;
 			session.setAttribute("totalCost", totalCost);
+			session.setAttribute("totalSeats", firstClass+businessClass+economyClass);
 			
 			RequestDispatcher rd = request
 					.getRequestDispatcher("transaction.jsp");

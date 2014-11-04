@@ -5,6 +5,7 @@
  %>
  
 <jsp:include page="header.jsp"/>
+<form class="form-horizontal" role="form" name="input" action="Transaction" method="post">
 <jsp:useBean id="flightBean" class="model.Flight" scope="session" />
 <h3>Confirmation</h3>
 <div class="well well-sm span4">
@@ -39,7 +40,6 @@
 
 <h3>Account information</h3>
 <div class="well well-sm span4">	
-	<form class="form-horizontal" role="form" name="input" action="Transaction" method="post">
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="accHolderName">Account holder name</label>
 				<div class="col-sm-10">
