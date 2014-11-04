@@ -5,7 +5,7 @@
  %>
  
 <jsp:include page="header.jsp"/>
-
+<jsp:useBean id="flightBean" class="model.Flight" scope="session" />
 <h3>Confirmation</h3>
 <div class="well well-sm span4">
 
@@ -24,14 +24,13 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td> 09/30/14 </td>
-					<td> Belo Horizonte </td>
-					<td> Lincoln </td>
-					<td> 844 </td>
-					<td> 1:00pm </td>
-					<td> 6:00am </td>
-					<td> 2 </td>
-					<td> $389,00 </td>
+					<td><jsp:getProperty property="departure" name="flightBean" /></td>
+					<td><jsp:getProperty property="source" name="flightBean" /></td>
+					<td><jsp:getProperty property="destination" name="flightBean" /></td>
+					<td><jsp:getProperty property="id" name="flightBean" /></td>
+					<td><jsp:getProperty property="departure" name="flightBean" /></td>
+					<td><jsp:getProperty property="arrival" name="flightBean" /></td>
+
 				</tr>
 			</tbody>
 		</table><br>
