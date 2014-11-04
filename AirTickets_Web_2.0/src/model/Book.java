@@ -10,8 +10,9 @@ public class Book {
 	private Date dateOfBooking;
 	private int flightIds;
 	private int numberOfSeats;
-	private String email;
+	private int userId;
 	private double totalCost;
+	private int accountId;
 
 	public int getId() {
 		return id;
@@ -53,12 +54,12 @@ public class Book {
 		this.numberOfSeats = numberOfSeats;
 	}
 
-	public String getEmail() {
-		return email;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public double getTotalCost() {
@@ -71,6 +72,13 @@ public class Book {
 
 	public Book() {
 		super();
+	}
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+	public int getAccountId() {
+		// TODO Auto-generated method stub
+		return accountId;
 	}
 
 }
