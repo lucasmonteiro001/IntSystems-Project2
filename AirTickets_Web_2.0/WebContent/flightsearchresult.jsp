@@ -50,7 +50,7 @@
 		<input type="button" class="btn" value="Back to Search page"
 			onclick="window.location='flightsearchquery.jsp';"> <input
 			type="button" class="btn" value="See booking history page"
-			onclick="window.location='bookinghistory.jsp';"> <input
+			onclick="window.location='BookingHistory';"> <input
 			type="submit" class="btn btn-primary" name="send"
 			value="View and Book" align="right">
 	</form>

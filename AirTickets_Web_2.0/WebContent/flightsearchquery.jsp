@@ -30,7 +30,8 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 	<form class="form-horizontal form-group-sm" role="form" name="input" action="FlightSearchQuery" method="post" id="input">
 		<div class="form-group">
   			<label class="col-sm-2 control-label" for="source">Source</label>
-  			<select name="source" form="input" id="source">
+  			<select name="source" form="input" id="source" required>
+  				<option value=""> </option>
   				<% for (int i = 0; i < airports.length ; i++) {%>
   					<option value=<%=airports[i]%> ><%=airports[i]%></option>
   				<% } %>
@@ -38,7 +39,8 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 		</div>
 		<div class="form-group">
   			<label class="col-sm-2 control-label" for="destination">Destination</label>
-  			<select name="destination" form="input" id="destination">
+  			<select name="destination" form="input" id="destination" required>
+  				<option value=""> </option>
   				<% for (int i = 0; i < airports.length ; i++) {%>
   					<option value=<%=airports[i]%> ><%=airports[i]%></option>
   				<% } %>
@@ -47,13 +49,13 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 		<div class="form-group">
   		<label class="col-sm-2 control-label" for="departure">Departure</label>
   			<div class="col-sm-10">
-  				<input type="textfield" class="form-group" id="departure" name="departure">
+  				<input type="textfield" class="form-group" id="departure" name="departure" required>
   			</div>
 		</div>
 		<div class="form-group">
   		<label class="col-sm-2 control-label" for="number_of_seats">Number of seats</label>
   			<div class="col-sm-10">
-  				<input type="number" class="form-group" min="1" max="10" id="number_of_seats" name="number_of_seats">
+  				<input type="number" class="form-group" min="1" max="10" id="number_of_seats" name="number_of_seats" required>
   			</div>
 		</div>
 		<div class="form-group">
@@ -70,6 +72,26 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 		<button type="button" class="btn btn-danger btn-sm" value="Exit" onClick="window.location='login.jsp'">Exit</button>
 	</form>    
 </div>
+
+<script>
+	$("form").validate({
+		rules: {
+		    number_of_seats: {
+		      	required: true
+		    },
+			source: {
+				required: true
+			},
+			destination: {
+				required: true
+			},
+			departure: {
+				required: true,
+				date: true
+			}
+		  }
+	});
+</script>
 
 <script>
 	MaskedInput({

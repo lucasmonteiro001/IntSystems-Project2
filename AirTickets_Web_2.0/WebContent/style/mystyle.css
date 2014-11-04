@@ -1,3 +1,9 @@
+label.error {
+	color: red;
+	padding-left: 16px;
+	margin-left: .3em;
+}
+
 .login-box {
 	width:50%;
 }
