@@ -45,8 +45,8 @@ public class FlightSearchResult extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession();
 		Flight flight = getChoosenFlight(request);
-		session.setAttribute("flightChoosen", flight);
-		
+		session.setAttribute("flightChoosen", flight.getId());
+		session.setAttribute("flightBean", flight);
 		RequestDispatcher rd = request
 				.getRequestDispatcher("reviewandbook.jsp");
 		rd.forward(request, response);
@@ -61,10 +61,8 @@ public class FlightSearchResult extends HttpServlet {
 
 		while (it.hasNext()) {
 			Flight tempFlight = (Flight) it.next();
-			if (request.getParameter("choosenFlight")
-					.equals(tempFlight.getId())) {
+			if (Integer.parseInt(request.getParameter("choosenFlight")) == tempFlight.getId()) {
 				return tempFlight;
-
 			}
 		}
 		return null;
