@@ -36,7 +36,7 @@
 		</table><br>
 	</div>
 	<input type="button" class="btn btn-sm" value="Back to see the flights"
-		onclick="window.location='flightsearchquery.jsp';">
+		onclick="window.history.back();">
 	<input type="submit" class="btn btn-primary btn-sm" name="send" value="Confirm" align="right"
 		onclick="window.location='transaction.jsp';">
 		

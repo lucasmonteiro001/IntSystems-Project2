@@ -52,7 +52,7 @@
 			type="button" class="btn" value="See booking history page"
 			onclick="window.location='bookinghistory.jsp';"> <input
 			type="submit" class="btn btn-primary" name="send"
-			value="Choose flight" align="right">
+			value="View and Book" align="right">
 	</form>
 </div>
 
