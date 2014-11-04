@@ -41,6 +41,22 @@
 <jsp:include page="bottom.jsp"/>
 
 <script>
+	$("form").validate({
+		rules: {
+			email: {
+		      	required: true,
+		      	email: true
+		    },
+		    dateOfBirth: {
+		    	required: true,
+		    	date: true
+		    }
+		    
+		  }
+	});
+</script>
+
+<script>
 	MaskedInput({
 		  elm: document.getElementById('dateOfBirth'),
 		  format: 'MM/DD/YYYY',
