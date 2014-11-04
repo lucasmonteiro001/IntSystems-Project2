@@ -2,6 +2,7 @@ package utilities;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import model.Flight;
@@ -51,19 +52,19 @@ public class FlightSearchDAO {
 				ArrayList<Flight> flightArray = new ArrayList<Flight>();
 				while (rs1.next()) {
 					Flight returnFlight = new Flight();
-					returnFlight.setArrival(rs1.getDate("arrival"));
-					returnFlight.setBusinessClassReserved(rs1
-							.getInt("business_reserved"));
-					returnFlight.setDeparture(rs1.getDate("departure"));
-					returnFlight.setDestination(rs1.getString("destination"));
-					returnFlight.setEconomyClassReserved(rs1
-							.getInt("economy_reserved"));
-					returnFlight.setFirstClassReserved(rs1
-							.getInt("first_class_reserved"));
-					returnFlight.setOperator(rs1.getString("operator"));
+					returnFlight.setId(rs1.getInt("id"));
 					returnFlight.setPlane(rs1.getInt("plane"));
+					returnFlight.setOperator(rs1.getString("operator"));
 					returnFlight.setSource(rs1.getString("source"));
+					returnFlight.setDestination(rs1.getString("destination"));
+					returnFlight.setBusinessClassReserved(rs1.getInt("business_reserved"));
+					returnFlight.setEconomyClassReserved(rs1.getInt("economy_reserved"));
+					returnFlight.setFirstClassReserved(rs1.getInt("first_class_reserved"));
+					returnFlight.setDeparture(rs1.getTimestamp("departure"));
+					returnFlight.setArrival(rs1.getTimestamp("arrival"));
+				
 					flightArray.add(returnFlight);
+
 				}
 				return flightArray;
 			}
