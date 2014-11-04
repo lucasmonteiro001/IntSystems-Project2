@@ -62,23 +62,10 @@ public class Booking extends HttpServlet {
 		User usr = (User) session.getAttribute("user");
 		book.setEmail(usr.getEmail());
 		book.setFlightIds(flight.getId());
+		book.setDateOfBooking(flight.getDeparture());
+		book.setNumberOfSeats(flight.getBusinessClassReserved()+flight.getEconomyClassReserved()+flight.getFirstClassReserved());
 		//book.setTotalCost(flight.get);
 	}
 	
-	public Flight getChoosenFlight (HttpServletRequest request) {
-		
-		ArrayList<Flight> flights = (ArrayList<Flight>) session.getAttribute("flights");
-		Iterator it = flights.iterator();
-
-		while (it.hasNext()) {
-			Flight tempFlight = (Flight) it.next();
-			if (request.getParameter("choosenFlight")
-					.equals(tempFlight.getId())) {
-				return tempFlight;
-				
-			}
-		}
-		return null;
-	}
 
 }

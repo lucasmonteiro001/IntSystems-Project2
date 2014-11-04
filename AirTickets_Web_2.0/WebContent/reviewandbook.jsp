@@ -3,6 +3,9 @@
  		response.sendRedirect("loginError.jsp");
  	}
  %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <jsp:useBean id="flightBean" class="model.Flight"
+	scope="session" />
  
 <jsp:include page="header.jsp"/>
 
@@ -23,14 +26,13 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td> 09/30/14 </td>
-					<td> Belo Horizonte </td>
-					<td> Lincoln </td>
-					<td> 844 </td>
-					<td> 1:00pm </td>
-					<td> 6:00am </td>
-					<td> 2 </td>
-					<td> $389,00 </td>
+
+					<tr>
+					
+						<td><jsp:getProperty property="source" name="flightBean"/></td>
+
+					</tr>
+			
 				</tr>
 			</tbody>
 		</table><br>

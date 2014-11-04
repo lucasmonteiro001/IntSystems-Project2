@@ -16,7 +16,7 @@
 	<p style="disply: block">Choose your destiny and when you want to
 		go.</p>
 
-	<form name="input" action="reviewandbook.jsp" method="post" role="form">
+	<form name="input" action="FlightSearchResult" method="post" role="form">
 
 		<table class="table table-hover" style="background-color: white">
 			<thead>

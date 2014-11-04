@@ -69,4 +69,14 @@
     <servlet-name>FlightResult</servlet-name>
     <url-pattern>/FlightResult</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookingHistory</display-name>
+    <servlet-name>BookingHistory</servlet-name>
+    <servlet-class>control.BookingHistory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookingHistory</servlet-name>
+    <url-pattern>/BookingHistory</url-pattern>
+  </servlet-mapping>
 </web-app>
