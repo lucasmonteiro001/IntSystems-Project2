@@ -34,10 +34,11 @@ public class ReviewAndBook extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession();
-		Flight flight = (Flight) request.getAttribute("flight");
+		Flight flight = (Flight) session.getAttribute("flightBean");
 		int economyClass = (int) session.getAttribute("economyClass");
 		int businessClass = (int) session.getAttribute("businessClass");
 		int firstClass = (int) session.getAttribute("firstClass");
+		
 		double totalCost = 0;
 		if ((flight.getBusinessClassReserved() - businessClass >= 0) && (flight.getEconomyClassReserved() - economyClass >= 0) && (flight.getFirstClassReserved() - firstClass >= 0)) {
 			totalCost = economyClass*TX_ECONOMY_SEAT+businessClass*TX_BUSINESS_CLASS_SEAT+firstClass*TX_FIRST_CLASS_SEAT;

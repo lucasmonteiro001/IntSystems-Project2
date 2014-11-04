@@ -30,6 +30,7 @@
 					<td><jsp:getProperty property="id" name="flightBean" /></td>
 					<td><jsp:getProperty property="departure" name="flightBean" /></td>
 					<td><jsp:getProperty property="arrival" name="flightBean" /></td>
+					<td><%session.getAttribute("totalCost"); %></td>
 
 				</tr>
 			</tbody>
@@ -38,25 +39,20 @@
 
 <h3>Account information</h3>
 <div class="well well-sm span4">	
-	<form class="form-horizontal" role="form" name="input" action="transactionconfirmationpage.jsp" method="post">
+	<form class="form-horizontal" role="form" name="input" action="Transaction" method="post">
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="accHolderName">Account holder name</label>
+				<label class="col-sm-2 control-label" for="accHolderName">Account holder id</label>
 				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="accHolderName" placeholder="Account holder name" name="accHolderName">
+					<input type="textfield" class="form-group" id="accHolderName" placeholder="Account holder name" name="accountHolderId">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="routNumber">Routing number</label>
 				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="routNumber" placeholder="Routing number" name="routNumber">
+					<input type="textfield" class="form-group" id="routNumber" placeholder="Routing number" name="accountRoutingNumber">
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label" for="accNumber">Account number</label>
-				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="accNumber" placeholder="Account number" name="accNumber">
-				</div>
-			</div>
+
 			<input class="col-sm-offset-2 btn btn-primary btn-sm" type="submit" value="Submit">
 		</form>
 </div>
