@@ -34,6 +34,7 @@
 					<td><jsp:getProperty property="id" name="flightBean" /></td>
 					<td><jsp:getProperty property="departure" name="flightBean" /></td>
 					<td><jsp:getProperty property="arrival" name="flightBean" /></td>
+					<td> 1 </td>
 
 				</tr>
 
