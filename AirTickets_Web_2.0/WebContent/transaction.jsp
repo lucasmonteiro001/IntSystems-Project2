@@ -43,13 +43,13 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="accHolderName">Account holder name</label>
 				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="accHolderName" placeholder="Account holder name" name="accountHolderId">
+					<input type="textfield" class="form-group" id="accountHolderId" placeholder="Account holder name" name="accountHolderId">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="routNumber">Routing number</label>
 				<div class="col-sm-10">
-					<input type="textfield" class="form-group" id="routNumber" placeholder="Routing number" name="accountRoutingNumber" data-mask="0000000000">
+					<input type="textfield" class="form-group" id="accountRoutingNumber" placeholder="Routing number" name="accountRoutingNumber" data-mask="0000000000">
 				</div>
 			</div>
 

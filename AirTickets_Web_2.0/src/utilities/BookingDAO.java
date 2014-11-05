@@ -1,12 +1,14 @@
 package utilities;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import model.Book;
-import model.User;
 //TODO EVERYTHING OF BOOKING
 public class BookingDAO {
 	private final String HOST_ADDRESS = "cse.unl.edu";
@@ -33,18 +35,65 @@ public class BookingDAO {
 		param.add(book.getAccountId());
 		param.add(book.getUserId());
 		param.add(book.getTotalCost());
-		
 
 
 		try {
+			// Insert in Booking table
 			ResultSet rs1 = jdbc.insertDB(
 					"INSERT INTO mmoraesg.booking (date_of_booking, flight_ids, number_of_seats, account_id, user_id, total_cost) VALUES (curdate(), ?, ?, ?, ?, ?);",
 					param);
+			
+			int bookingId = getBookingId(param);
+			
+			ArrayList<Object> param_bf = new ArrayList<Object>();
+			param_bf.add(bookingId);
+			param_bf.add(book.getFlightIds());
+			
+			ResultSet rs2 = jdbc.insertDB("INSERT INTO mmoraesg.booking_flight (booking_id, flight_id) VALUES (?, ?)", param_bf);
 
 			jdbc.conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public int getBookingId(ArrayList<Object> param) throws SQLException {
+		
+		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
+				PASSWORD);
+		
+		ResultSet rs1 = jdbc
+				.queryDB(
+						"SELECT id FROM mmoraesg.booking WHERE date_of_booking = curDate() AND "
+						+ "flight_ids = ? AND number_of_seats = ? AND account_id = ? AND  user_id = ? AND total_cost = ?;",
+						param);
+		
+		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+		ResultSetMetaData metaData = rs1.getMetaData();
+		
+		while (rs1.next()) {
+		    Map<String, Object> columns = new LinkedHashMap<String, Object>();
+
+		    for (int i = 1; i <= metaData.getColumnCount(); i++) {
+		        columns.put(metaData.getColumnLabel(i), rs1.getObject(i));
+		    }
+
+		    rows.add(columns);
+		}
+
+		try {
+			if (rows.size() != 0) {
+				int returnBook;
+				returnBook = ((int) rows.get(0).get("id"));
+				
+				return returnBook;
+			}
+			jdbc.conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

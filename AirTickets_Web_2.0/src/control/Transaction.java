@@ -43,10 +43,15 @@ public class Transaction extends HttpServlet {
 		AccountDAO accountDao = new AccountDAO();
 		BookingDAO bookingDao = new BookingDAO();
 		
-		account.setHolderId(Integer.parseInt (request.getParameter("accountHolderId").toString()));
-		account.setRoutingNumber(Integer.parseInt (request.getParameter("accountRoutingNumber").toString()));
+		int hId = Integer.parseInt (request.getParameter("accountHolderId"));
+		int rNum = Integer.parseInt(request.getParameter("accountRoutingNumber"));
+		
+		account.setHolderId(hId);
+		account.setRoutingNumber(rNum);
 		
 		account = accountDao.readAccount(account);
+		
+		// TODO testar se a conta eh nula
 		
 		if (account.getBalance() - Double.parseDouble(session.getAttribute("totalCost").toString()) >= 0) {
 			account.setBalance(account.getBalance() - Double.parseDouble(session.getAttribute("totalCost").toString()));
