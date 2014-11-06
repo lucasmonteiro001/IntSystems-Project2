@@ -81,11 +81,11 @@ public class Transaction extends HttpServlet {
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			RequestDispatcher rd = request
-					.getRequestDispatcher("accountError.jsp");
+					.getRequestDispatcher("WEB-INF/accountError.jsp");
 			rd.forward(request, response);
 		} catch (NullPointerException e) {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("accountError.jsp");
+					.getRequestDispatcher("WEB-INF/accountError.jsp");
 			rd.forward(request, response);
 		}
 		
