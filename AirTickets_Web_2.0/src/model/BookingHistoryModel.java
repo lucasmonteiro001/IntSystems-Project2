@@ -1,6 +1,13 @@
 package model;
 
 import java.util.Date;
+/**
+ * Model class for BookingHistoryModel, containing all the data for the Booking.
+ * 
+ * @author Lucas
+ *
+ */
+
 
 public class BookingHistoryModel {
 	

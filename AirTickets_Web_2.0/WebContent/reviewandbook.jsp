@@ -27,7 +27,6 @@
 			<tbody>
 				<tr>
 				<tr>
-
 					<td><jsp:getProperty property="departure" name="flightBean" /></td>
 					<td><jsp:getProperty property="source" name="flightBean" /></td>
 					<td><jsp:getProperty property="destination" name="flightBean" /></td>
@@ -37,7 +36,6 @@
 					<td> 1 </td>
 
 				</tr>
-
 				</tr>
 			</tbody>
 		</table>

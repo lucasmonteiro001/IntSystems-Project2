@@ -2,6 +2,13 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Model class for Fight, containing all the data for the Flight.
+ * 
+ * @author Mateus
+ *
+ */
+
 public class Flight {
 	private int id;
 	private int plane;

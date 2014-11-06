@@ -1,4 +1,10 @@
 package model;
+/**
+ * Model class for Account, containing all the data for the Account.
+ * 
+ * @author Lucas
+ *
+ */
 
 public class Account {
 	private int id;
