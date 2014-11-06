@@ -24,6 +24,11 @@ public class BookingDAO {
 
 	}
 
+	/**
+	 * This method adds the Booking object passed as parameter of the database.
+	 * @see JDBCHelper 
+	 * @param book
+	 */
 	public void addBooking(Book book) {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
@@ -57,7 +62,11 @@ public class BookingDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * This method gets the booking id of the order.
+	 * @see JDBCHelper 
+	 * @param param
+	 */
 	public int getBookingId(ArrayList<Object> param) throws SQLException {
 		
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,

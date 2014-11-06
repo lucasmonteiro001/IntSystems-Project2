@@ -2,6 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+/**
+ * Model class for Book, containing all the data for the Book.
+ * 
+ * @author Mateus
+ *
+ */
 
 public class Book {
 

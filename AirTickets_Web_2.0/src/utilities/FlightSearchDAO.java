@@ -7,7 +7,11 @@ import java.util.ArrayList;
 
 import model.Flight;
 import model.User;
-
+/**
+ * FlightSearchDAO class to manipulate the Flights in a search.
+ * @author Lucas
+ *
+ */
 //TODO update user
 public class FlightSearchDAO {
 	private final String HOST_ADDRESS = "cse.unl.edu";
@@ -22,7 +26,11 @@ public class FlightSearchDAO {
 	public FlightSearchDAO() {
 
 	}
-
+/**
+ * This method reads the flights which best matches the search for flights.
+ * @param flight
+ * @return ArrayList<Flight>
+ */
 	public ArrayList<Flight> readFlight(Flight flight) {
 		// (String host, String db, String user, String password){
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
@@ -79,7 +87,11 @@ public class FlightSearchDAO {
 		}
 		return null;
 	}
-
+	/**
+	 * This method reads multiple flights which best matches the search for flights.
+	 * @param flight
+	 * @return ArrayList<Flight>
+	 */
 	public ArrayList<Flight> readMultipleFlights(Flight flight) {
 		// (String host, String db, String user, String password){
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,

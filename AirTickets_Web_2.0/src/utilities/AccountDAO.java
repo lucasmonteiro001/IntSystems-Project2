@@ -5,7 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Account;
-
+/**
+ * UserDAO class to manipulates the User on Database.
+ */
 public class AccountDAO {
 
 	private final String HOST_ADDRESS = "cse.unl.edu";
@@ -20,7 +22,11 @@ public class AccountDAO {
 	public AccountDAO() {
 
 	}
-
+	/**
+	 * This method remove the account passed as parameter of the database.
+	 * @see JDBCHelper 
+	 * @param account
+	 */
 	public Account readAccount(Account account) {
 		// (String host, String db, String user, String password){
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
@@ -53,7 +59,11 @@ public class AccountDAO {
 		return null;
 	}
 
-	// TODO criar os campos de usuario tal qual o ERD disponibilizado.
+	/**
+	 * This method adds the account passed as parameter of the database.
+	 * @see JDBCHelper 
+	 * @param account
+	 */
 	public void addAccount(Account account) {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
@@ -75,6 +85,11 @@ public class AccountDAO {
 
 	}
 
+	/**
+	 * This method remove the account passed as parameter of the database.
+	 * @see JDBCHelper 
+	 * @param account
+	 */
 	public void removeAccount(Account account) {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);

@@ -5,8 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.User;
-//TODO update user
+/**
+ * UserDAO class to manipulates the User on Database.
+ */
 public class UserDAO {
+
 	private final String HOST_ADDRESS = "cse.unl.edu";
 	private final String USER_DATABASE = "mmoraesg";
 	private final String USERNAME = "mmoraesg";
@@ -19,7 +22,11 @@ public class UserDAO {
 	public UserDAO() {
 
 	}
-
+	/**
+	 * This method reads the user passed as parameter of the database.
+	 * @see JDBCHelper 
+	 * @param user
+	 */
 	
 	public User readUser(User user) {
 		// (String host, String db, String user, String password){
@@ -54,7 +61,11 @@ public class UserDAO {
 		return null;
 	}
 
-	// TODO criar os campos de usuario tal qual o ERD disponibilizado.
+	/**
+ * This method adds the user passed as parameter of the database.
+ * @see JDBCHelper 
+ * @param user
+	 */
 	public void addUser(User user) {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
@@ -78,7 +89,11 @@ public class UserDAO {
 		}
 
 	}
-
+/**
+ * This method remove the user passed as parameter of the database.
+ * @see JDBCHelper 
+ * @param user
+ */
 	public void removeUser(User user) {
 		JDBCHelper jdbc = new JDBCHelper(HOST_ADDRESS, USER_DATABASE, USERNAME,
 				PASSWORD);
