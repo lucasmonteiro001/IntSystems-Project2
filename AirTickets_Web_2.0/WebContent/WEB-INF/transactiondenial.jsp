@@ -1,9 +1,3 @@
-<%
- 	if (session.getAttribute("user") == null) {
- 		response.sendRedirect("LoginError");
- 	}
- %>
- 
 <jsp:include page="../WEB-INF/classes/header.jsp"/>
 
 	<h3>Sorry, your order could not be processed.</h3>

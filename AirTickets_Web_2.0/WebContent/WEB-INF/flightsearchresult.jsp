@@ -1,9 +1,3 @@
-
-<%
-	if (session.getAttribute("user") == null) {
-		response.sendRedirect("LoginError");
-	}
-%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Flight"%>

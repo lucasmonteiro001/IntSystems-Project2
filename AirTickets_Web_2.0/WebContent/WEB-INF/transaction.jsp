@@ -1,10 +1,3 @@
-<%
- 	if (session.getAttribute("user") == null) {
- 		response.sendRedirect("LoginError");
- 	}
-
- %>
- 
 <jsp:include page="../WEB-INF/classes/header.jsp"/>
 <form class="form-horizontal" role="form" name="input" action="Transaction" method="post">
 <jsp:useBean id="flightBean" class="model.Flight" scope="session" />

@@ -1,12 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.BookingHistoryModel"%>
-<%
- 	if (session.getAttribute("user") == null) {
- 		response.sendRedirect("LoginError");
- 	}
- %>
- 
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
 <jsp:include page="../WEB-INF/classes/header.jsp"/>
 

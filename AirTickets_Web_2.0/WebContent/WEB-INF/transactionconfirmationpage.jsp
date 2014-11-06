@@ -1,9 +1,3 @@
-<%
-	if (session.getAttribute("user") == null) {
-		response.sendRedirect("LoginError");
-	}
-%>
-
 <jsp:useBean id="flightBean" class="model.Flight" scope="session"/>
 <jsp:useBean id="booking" class="model.Book" scope="session"/>
 
