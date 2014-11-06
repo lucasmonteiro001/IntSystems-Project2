@@ -5,6 +5,8 @@
 	}
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Flight"%>
 
 <jsp:include page="../header.jsp" />
 
@@ -19,7 +21,8 @@
 		role="form">
 
 		<%
-			if (session.getAttribute("flights") != null) {
+			ArrayList <Flight> fs = (ArrayList <Flight>) session.getAttribute("flights");
+			if (fs.size() != 0) {
 		%>
 		<table class="table table-hover" style="background-color: white">
 			<thead>

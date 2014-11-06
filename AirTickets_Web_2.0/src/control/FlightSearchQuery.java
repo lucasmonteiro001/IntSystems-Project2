@@ -39,7 +39,7 @@ public class FlightSearchQuery extends HttpServlet {
 		// Just can work if a session is there
 		HttpSession session = request.getSession();
 
-		ArrayList<Flight> flights;
+		ArrayList<Flight> flights = null;
 		if (request.getParameter("source") != null
 				&& request.getParameter("destination") != null) {
 			Flight flight = new Flight();
