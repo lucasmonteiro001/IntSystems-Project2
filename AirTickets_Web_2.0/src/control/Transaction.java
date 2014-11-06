@@ -43,35 +43,52 @@ public class Transaction extends HttpServlet {
 		AccountDAO accountDao = new AccountDAO();
 		BookingDAO bookingDao = new BookingDAO();
 		
-		int hId = Integer.parseInt (request.getParameter("accountHolderId"));
-		int rNum = Integer.parseInt(request.getParameter("accountRoutingNumber"));
 		
-		account.setHolderId(hId);
-		account.setRoutingNumber(rNum);
-		
-		account = accountDao.readAccount(account);
-		
-		// TODO testar se a conta eh nula
-		
-		if (account.getBalance() - Double.parseDouble(session.getAttribute("totalCost").toString()) >= 0) {
-			account.setBalance(account.getBalance() - Double.parseDouble(session.getAttribute("totalCost").toString()));
-			accountDao.updateAccount(account);
-			book.setFlightIds(flight.getId());
-			book.setNumberOfSeats(Integer.parseInt(session.getAttribute("totalSeats").toString()));
-			book.setTotalCost( Double.parseDouble(session.getAttribute("totalCost").toString()));
-			book.setAccountId(account.getId());
-			book.setUserId(user.getId());
-			bookingDao.addBooking(book);
+		int hId = 0;
+		int rNum = 0;
+		try {
+			
+			hId = Integer.parseInt (request.getParameter("accountHolderId"));
+			rNum = Integer.parseInt(request.getParameter("accountRoutingNumber"));
+			
+			account.setHolderId(hId);
+			account.setRoutingNumber(rNum);
+			
+			account = accountDao.readAccount(account);
+			
+			// TODO testar se a conta eh nula
+			
+			if (account.getBalance() - Double.parseDouble(session.getAttribute("totalCost").toString()) >= 0) {
+				account.setBalance(account.getBalance() - Double.parseDouble(session.getAttribute("totalCost").toString()));
+				accountDao.updateAccount(account);
+				book.setFlightIds(flight.getId());
+				book.setNumberOfSeats(Integer.parseInt(session.getAttribute("totalSeats").toString()));
+				book.setTotalCost( Double.parseDouble(session.getAttribute("totalCost").toString()));
+				book.setAccountId(account.getId());
+				book.setUserId(user.getId());
+				bookingDao.addBooking(book);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("transactionconfirmationpage.jsp");
+				rd.forward(request, response);
+			}
+			else {
+				session.setAttribute("reason", "Your account number was rejected by your bank. Please contact them and try again.");
+				RequestDispatcher rd = request
+						.getRequestDispatcher("transactiondenial.jsp");
+				rd.forward(request, response);
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
 			RequestDispatcher rd = request
-					.getRequestDispatcher("transactionconfirmationpage.jsp");
+					.getRequestDispatcher("accountError.jsp");
+			rd.forward(request, response);
+		} catch (NullPointerException e) {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("accountError.jsp");
 			rd.forward(request, response);
 		}
-		else {
-			session.setAttribute("reason", "Your account number was rejected by your bank. Please contact them and try again.");
-			RequestDispatcher rd = request
-					.getRequestDispatcher("transactiondenial.jsp");
-			rd.forward(request, response);
-		}
+		
+		
 	}
 
 }

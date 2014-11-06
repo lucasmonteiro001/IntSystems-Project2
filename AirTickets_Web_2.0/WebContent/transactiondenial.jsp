@@ -14,8 +14,7 @@
 		
 		<p><%= session.getAttribute("reason") %></p>
 		<br/>
-		Click <a
-			href="flightsearchquery.jsp"> here </a> to try again!
+		Click <span onclick="window.history.back()" style="cursor:pointer"><a> here </a></span> to try again!
 	</p><br>
 
 	<button type="button" class="btn btn-primary btn-sm"  onClick="window.location='flightsearchquery.jsp'"><b>Home</b></button>
