@@ -34,6 +34,13 @@ public class FlightSearchQuery extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	/**
+	 * This doPost calls the model Flight and sets the attribute if there is a result from the search. 
+	 * Then it redirects for the appropriate page.
+	 * 
+
+	 */
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Just can work if a session is there

@@ -38,8 +38,11 @@ public class FlightSearchResult extends HttpServlet {
 	}
 
 	/**
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
+	 * @see FlightSearchResult#getChoosenFlight(HttpServletRequest)
+	 *      
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -53,6 +56,11 @@ public class FlightSearchResult extends HttpServlet {
 
 	}
 
+	/**
+	 * This method returns a flight if it exists.
+	 * @param request
+	 * @return tempFlight
+	 */
 	public Flight getChoosenFlight(HttpServletRequest request) {
 
 		ArrayList<Flight> flights = (ArrayList<Flight>) session

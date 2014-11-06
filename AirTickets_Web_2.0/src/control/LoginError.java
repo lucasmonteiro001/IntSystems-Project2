@@ -31,11 +31,20 @@ public class LoginError extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see LoginError#loginError(HttpServletRequest, HttpServletResponse)
+	 * 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		loginError(request, response);
 	}
 	
+	/**
+	 * This method redirects the user to the loginError page.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	void loginError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request
 				.getRequestDispatcher("WEB-INF/loginError.jsp");

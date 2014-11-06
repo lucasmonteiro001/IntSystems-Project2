@@ -49,6 +49,10 @@ public class BookingHistory extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	/**
+	 * This doGet calls the servlet BookingHistoryModel retrieve the information of the Booking History. 
+	 * 
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
@@ -71,7 +75,7 @@ public class BookingHistory extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	//TODO What is the best way to integrate Account, User and Booking?
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);
