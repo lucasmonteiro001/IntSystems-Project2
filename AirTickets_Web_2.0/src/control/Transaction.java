@@ -67,6 +67,7 @@ public class Transaction extends HttpServlet {
 				book.setAccountId(account.getId());
 				book.setUserId(user.getId());
 				bookingDao.addBooking(book);
+				session.setAttribute("booking", book);
 				RequestDispatcher rd = request
 						.getRequestDispatcher("transactionconfirmationpage.jsp");
 				rd.forward(request, response);

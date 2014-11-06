@@ -76,6 +76,7 @@ public class Login extends HttpServlet {
 				}
 			}
 			else {
+				session.setAttribute("status", "Wrong username or password.");
 				response.sendRedirect("login.jsp");
 			}
 			
