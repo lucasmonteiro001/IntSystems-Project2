@@ -81,7 +81,7 @@ public class FlightSearchQuery extends HttpServlet {
 			}
 
 			RequestDispatcher rd = request
-					.getRequestDispatcher("flightsearchresult.jsp");
+					.getRequestDispatcher("WEB-INF/flightsearchresult.jsp");
 			rd.forward(request, response);
 		}
 
