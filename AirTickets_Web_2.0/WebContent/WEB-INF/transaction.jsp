@@ -5,7 +5,7 @@
 
  %>
  
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <form class="form-horizontal" role="form" name="input" action="Transaction" method="post">
 <jsp:useBean id="flightBean" class="model.Flight" scope="session" />
 <h3>Confirmation</h3>
@@ -75,4 +75,4 @@
 		  }
 	});
 </script>
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="../bottom.jsp"/>

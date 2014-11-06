@@ -1,6 +1,6 @@
 <%@page import="utilities.PageUtilities"%>
 <%@page import="java.util.*"%>
-<%@ include file="../head.jsp"%>
+<%@ include file="head.jsp"%>
 
 <% if (session.getAttribute("user") != null) { %>
 	<jsp:useBean id="user" class="model.User" scope="session" />

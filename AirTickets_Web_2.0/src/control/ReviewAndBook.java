@@ -51,12 +51,12 @@ public class ReviewAndBook extends HttpServlet {
 			session.setAttribute("totalSeats", firstClass+businessClass+economyClass);
 			
 			RequestDispatcher rd = request
-					.getRequestDispatcher("transaction.jsp");
+					.getRequestDispatcher("WEB-INF/transaction.jsp");
 			rd.forward(request, response);
 		}
 		else {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("reviewandbook.jsp");
+					.getRequestDispatcher("WEB-INF/reviewandbook.jsp");
 			rd.forward(request, response);
 		}
 		

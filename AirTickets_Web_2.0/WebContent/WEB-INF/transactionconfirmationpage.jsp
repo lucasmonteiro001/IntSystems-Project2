@@ -1,13 +1,13 @@
-<jsp:useBean id="flightBean" class="model.Flight" scope="session"/>
-<jsp:useBean id="user" class="model.User" scope="session"/>
-<jsp:useBean id="booking" class="model.Book" scope="session"/>
 <%
 	if (session.getAttribute("user") == null) {
 		response.sendRedirect("loginError.jsp");
 	}
 %>
 
-<jsp:include page="header.jsp" />
+<jsp:useBean id="flightBean" class="model.Flight" scope="session"/>
+<jsp:useBean id="booking" class="model.Book" scope="session"/>
+
+<jsp:include page="../header.jsp" />
 
 <h3>Order received! Your flight has been reserved. See you soon!</h3>
 
@@ -40,4 +40,4 @@
 	<b>Home</b>
 </button>
 
-<jsp:include page="bottom.jsp" />
+<jsp:include page="../bottom.jsp" />

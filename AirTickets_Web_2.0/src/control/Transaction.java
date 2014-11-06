@@ -69,13 +69,13 @@ public class Transaction extends HttpServlet {
 				bookingDao.addBooking(book);
 				session.setAttribute("booking", book);
 				RequestDispatcher rd = request
-						.getRequestDispatcher("transactionconfirmationpage.jsp");
+						.getRequestDispatcher("WEB-INF/transactionconfirmationpage.jsp");
 				rd.forward(request, response);
 			}
 			else {
 				session.setAttribute("reason", "Your account number was rejected by your bank. Please contact them and try again.");
 				RequestDispatcher rd = request
-						.getRequestDispatcher("transactiondenial.jsp");
+						.getRequestDispatcher("WEB-INF/transactiondenial.jsp");
 				rd.forward(request, response);
 			}
 		} catch (NumberFormatException e) {
