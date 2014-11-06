@@ -2,7 +2,7 @@
 <%@page import="model.BookingHistoryModel"%>
 <%
  	if (session.getAttribute("user") == null) {
- 		response.sendRedirect("loginError.jsp");
+ 		response.sendRedirect("LoginError");
  	}
  %>
  
