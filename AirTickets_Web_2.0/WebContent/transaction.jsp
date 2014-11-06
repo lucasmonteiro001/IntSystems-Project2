@@ -2,6 +2,7 @@
  	if (session.getAttribute("user") == null) {
  		response.sendRedirect("loginError.jsp");
  	}
+
  %>
  
 <jsp:include page="header.jsp"/>
@@ -32,7 +33,7 @@
 					<td><jsp:getProperty property="departure" name="flightBean" /></td>
 					<td><jsp:getProperty property="arrival" name="flightBean" /></td>
 					<td> 1 </td>
-					<td> <%= session.getAttribute("totalCost") %></td>
+					<td> <%= session.getAttribute("totalCostFormatted") %></td>
 
 				</tr>
 			</tbody>

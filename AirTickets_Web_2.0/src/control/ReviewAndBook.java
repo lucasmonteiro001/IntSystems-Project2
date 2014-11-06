@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,7 +42,11 @@ public class ReviewAndBook extends HttpServlet {
 		
 		double totalCost = 0;
 		if ((flight.getBusinessClassReserved() - businessClass >= 0) && (flight.getEconomyClassReserved() - economyClass >= 0) && (flight.getFirstClassReserved() - firstClass >= 0)) {
+			
 			totalCost = economyClass*TX_ECONOMY_SEAT+businessClass*TX_BUSINESS_CLASS_SEAT+firstClass*TX_FIRST_CLASS_SEAT;
+			NumberFormat formatter = NumberFormat.getCurrencyInstance();
+			
+			session.setAttribute("totalCostFormatted", formatter.format(totalCost));
 			session.setAttribute("totalCost", totalCost);
 			session.setAttribute("totalSeats", firstClass+businessClass+economyClass);
 			
