@@ -8,7 +8,6 @@
 
 <jsp:include page="../header.jsp" />
 
-
 <div class="well well-sm span4">
 	<h4 style="display: inline">Choose your flight</h4>
 
@@ -16,8 +15,12 @@
 	<p style="disply: block">Choose your destiny and when you want to
 		go.</p>
 
-	<form name="input" action="FlightSearchResult" method="post" role="form">
+	<form name="input" action="FlightSearchResult" method="post"
+		role="form">
 
+		<%
+			if (session.getAttribute("flights") != null) {
+		%>
 		<table class="table table-hover" style="background-color: white">
 			<thead>
 				<tr>
@@ -35,7 +38,8 @@
 			<tbody>
 				<c:forEach var="flightBean" items="${requestScope['flights']}">
 					<tr>
-						<td><input type="radio" id="${flightBean.id}" name="choosenFlight" value="${flightBean.id}" required></td>
+						<td><input type="radio" id="${flightBean.id}"
+							name="choosenFlight" value="${flightBean.id}" required></td>
 						<td><c:out value="${flightBean.departure}" /></td>
 						<td><c:out value="${flightBean.source}" /></td>
 						<td><c:out value="${flightBean.plane}" /></td>
@@ -44,27 +48,39 @@
 						<td><c:out value="${flightBean.arrival}" /></td>
 					</tr>
 				</c:forEach>
-			</tbody>	
+			</tbody>
 		</table>
-		
-		<label for="choosenFlight" class="error" style="display:none">Please select one option</label><br>
-		
-		<input type="button" class="btn" value="Back to Search page"
-			onclick="window.history.back();"> 
+
+		<label for="choosenFlight" class="error" style="display: none">Please
+			select one option</label><br> <input type="button" class="btn"
+			value="Back to Search page" onclick="window.history.back();">
 		<input type="button" class="btn" value="See booking history page"
-			onclick="window.location='BookingHistory';"> 
-		<input type="submit" class="btn btn-primary" name="send"
+			onclick="window.location='BookingHistory';"> <input
+			type="submit" class="btn btn-primary" name="send"
 			value="View and Book" align="right">
 	</form>
+	<%
+		} else {
+	%>
+	<p style="disply: block">Sorry. We were unable to find any results for your search.</p>
+
+	<input type="button" class="btn" value="Back to Search page"
+		onclick="window.history.back();"> <input type="button"
+		class="btn" value="See booking history page"
+		onclick="window.location='BookingHistory';">
+	<%
+		}
+	%>
+
 </div>
 
 <script>
 	$("form").validate({
-		rules: {
-			choosenFlight: {
-		      	required: true
-		    }
-		  }
+		rules : {
+			choosenFlight : {
+				required : true
+			}
+		}
 	});
 </script>
 
