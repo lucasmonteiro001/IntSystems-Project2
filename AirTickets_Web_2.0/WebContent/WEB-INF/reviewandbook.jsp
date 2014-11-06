@@ -7,7 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:useBean id="flightBean" class="model.Flight" scope="session" />
 
-<jsp:include page="../header.jsp" />
+<jsp:include page="../WEB-INF/classes/header.jsp" />
 <form name="input" action="ReviewAndBook" method="post" role="form">
 	<h3>You have choosen this flight</h3>
 	<div class="well well-sm span4">
@@ -46,4 +46,4 @@
 		class="btn btn-primary btn-sm" name="send" value="Confirm"
 		align="right" >
 </form>
-<jsp:include page="../bottom.jsp" />
+<jsp:include page="../WEB-INF/classes/bottom.jsp" />

@@ -8,7 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Flight"%>
 
-<jsp:include page="../header.jsp" />
+<jsp:include page="../WEB-INF/classes/header.jsp" />
 
 <div class="well well-sm span4">
 	<h4 style="display: inline">Choose your flight</h4>
@@ -89,4 +89,4 @@
 	});
 </script>
 
-<jsp:include page="../bottom.jsp" />
+<jsp:include page="../WEB-INF/classes/bottom.jsp" />

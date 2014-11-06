@@ -4,7 +4,7 @@
  	}
  %>
  
-<jsp:include page="../header.jsp"/>
+<jsp:include page="../WEB-INF/classes/header.jsp"/>
 
 	<h3>Sorry, your order could not be processed.</h3>
 
@@ -19,4 +19,4 @@
 
 	<button type="button" class="btn btn-primary btn-sm"  onClick="window.location='flightsearchquery.jsp'"><b>Home</b></button>
 	
-<jsp:include page="../bottom.jsp"/>
+<jsp:include page="../WEB-INF/classes/bottom.jsp"/>

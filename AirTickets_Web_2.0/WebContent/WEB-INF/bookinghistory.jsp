@@ -8,7 +8,7 @@
  
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
-<jsp:include page="../header.jsp"/>
+<jsp:include page="../WEB-INF/classes/header.jsp"/>
 
 	<div class="well well-sm span4">
 		<h4 style="display:inline">Your booking history is below:</h4>

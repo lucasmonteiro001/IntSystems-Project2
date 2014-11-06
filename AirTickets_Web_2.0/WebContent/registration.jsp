@@ -1,4 +1,4 @@
-<jsp:include page="header.jsp"/>
+<jsp:include page="WEB-INF/classes/header.jsp"/>
 
 <script src="js/checkPwd.js"></script>
 
@@ -38,7 +38,7 @@
 	</form>
 </div>
 	
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="WEB-INF/classes/bottom.jsp"/>
 
 <script>
 	$("form").validate({

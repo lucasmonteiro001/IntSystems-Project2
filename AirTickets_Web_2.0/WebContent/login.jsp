@@ -1,4 +1,4 @@
-<jsp:include page="header.jsp" />
+<jsp:include page="WEB-INF/classes/header.jsp" />
 
 
 <h3>Log in here</h3>
@@ -48,4 +48,4 @@
 	});
 </script>
 
-<jsp:include page="bottom.jsp" />
+<jsp:include page="WEB-INF/classes/bottom.jsp" />

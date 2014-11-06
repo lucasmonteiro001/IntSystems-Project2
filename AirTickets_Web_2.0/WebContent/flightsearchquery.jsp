@@ -19,7 +19,7 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 		"SEA", "STL", "TPA", "IAD", "DCA"}; 
 %>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="WEB-INF/classes/header.jsp"/>
 
 <script type="text/javascript" src="js/masked_input_1.3.js"></script>
 
@@ -106,5 +106,5 @@ String[] airports = {"ATL", "ANC", "AUS", "BWI", "BOS",
 		});
 </script>
 
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="WEB-INF/classes/bottom.jsp"/>
 

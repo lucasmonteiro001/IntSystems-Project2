@@ -7,7 +7,7 @@
 <jsp:useBean id="flightBean" class="model.Flight" scope="session"/>
 <jsp:useBean id="booking" class="model.Book" scope="session"/>
 
-<jsp:include page="../header.jsp" />
+<jsp:include page="../WEB-INF/classes/header.jsp" />
 
 <h3>Order received! Your flight has been reserved. See you soon!</h3>
 
@@ -40,4 +40,4 @@
 	<b>Home</b>
 </button>
 
-<jsp:include page="../bottom.jsp" />
+<jsp:include page="../WEB-INF/classes/bottom.jsp" />
