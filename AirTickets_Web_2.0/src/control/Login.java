@@ -70,6 +70,10 @@ public class Login extends HttpServlet {
 					session.setAttribute("user", usr);
 					response.sendRedirect("flightsearchquery.jsp");
 				}
+				else {
+					session.setAttribute("status", "Wrong username or password.");
+					response.sendRedirect("login.jsp");
+				}
 			}
 			else {
 				response.sendRedirect("login.jsp");
