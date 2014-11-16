@@ -2,9 +2,9 @@ package control;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.Enumeration;
 
+import javax.json.JsonObject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,74 +12,123 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import utilities.BookingHistoryDAO;
-import model.Book;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
+
 import model.BookingHistoryModel;
-import model.Flight;
 import model.User;
+import utilities.BookingHistoryDAO;
 
 /**
  * Servlet implementation class Booking
  */
 public class BookingHistory extends HttpServlet {
-	
-	/*
-	 * id - int
-	booking_id - int
-	date_of_booking - date
-	flight_ids - int (array)
-	number_of_seats - int
-	account_id - int (email)
-	total_cost - double
-	 */
+
 	private static final long serialVersionUID = 1L;
-	private final String BOOKING_ID = "bookingid";
-	private final String DATE_OF_BOOKING = "dateofbooking";
-	private final String NUMBER_OF_SEATS = "numberofseats";
-	private final String BOOKING_EMAIL = "email";
-	private final String TOTAL_COST = "totalcost";
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BookingHistory() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public BookingHistory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	/**
-	 * This doGet calls the servlet BookingHistoryModel retrieve the information of the Booking History. 
+	 * This doGet calls the servlet BookingHistoryModel retrieve the information
+	 * of the Booking History.
 	 * 
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		
-		BookingHistoryDAO bHDAO = new BookingHistoryDAO();
-		
-		ArrayList<model.BookingHistoryModel> booking;
-		User user = (User) session.getAttribute("user");
-		
-		booking = bHDAO.getBookingHistory(user);
-		
-		session.setAttribute("bookingHistory", booking);
-		
-		RequestDispatcher rd = request
-				.getRequestDispatcher("WEB-INF/bookinghistory.jsp");
-		
-		rd.forward(request, response);
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		if (request.getParameter("action") != null) {
+
+			String action = (String) request.getParameter("action");
+
+			HttpSession session = request.getSession();
+
+			User user = (User) session.getAttribute("user");
+
+			BookingHistoryDAO dao = new BookingHistoryDAO();
+
+			switch (action) {
+			case "bookingHistoryList":
+				try {
+					int startPageIndex		= Integer.parseInt(request.getParameter("jtStartIndex"));
+					int numRecordsPerPage	= Integer.parseInt(request.getParameter("jtPageSize"));
+					       
+					ArrayList<BookingHistoryModel> all = dao .getBookingHistory(user, startPageIndex, numRecordsPerPage);
+					
+					//Get Total Record Count for Pagination
+					int bookingListCount = dao.getBookingHistoryCount(user);
+
+					Gson gson = new Gson();
+
+					JsonElement element = gson.toJsonTree(all,
+							new TypeToken<ArrayList<BookingHistoryModel>>() {}.getType());
+
+					JsonArray jsonArray = element.getAsJsonArray();
+
+					String listData = jsonArray.toString();
+					
+					// Return Json in the format required by jTable plugin
+					listData = "{\"Result\":\"OK\",\"Records\":" + listData + ",\"TotalRecordCount\":" + bookingListCount +"}";
+					
+					response.getWriter().print(listData);
+
+				} catch (Exception ex) {
+					String error="{\"Result\":\"ERROR\",\"Message\":" + ex.getMessage() + "}";
+					response.getWriter().print(error);
+					ex.printStackTrace();
+
+				}
+				break;
+
+			default:
+				System.out.println("Passou direto");
+				break;
+			}
+		} else {
+
+			RequestDispatcher rd = request
+					.getRequestDispatcher("bookinghistory.jsp");
+
+			rd.forward(request, response);
+		}
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		doGet(request, response);
 	}
-	
 
+	public JsonObject getBookingHistoryList(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+
+		BookingHistoryDAO bHDAO = new BookingHistoryDAO();
+
+		JsonObject booking = null;
+
+		User user = (User) session.getAttribute("user");
+
+		booking = bHDAO.getBookingHistoryJson(user);
+
+		return booking;
+	}
 }
